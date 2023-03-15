@@ -9,11 +9,11 @@ class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateLimit(1)]);  
+        return view('posts/index')->with(['posts' => $post->getPaginateLimit()]);  
     }
 
     public function show(Post $post)
     {
-        return view('posts/show')->with(['post' => $post]);
+        return viem('posts/show')->with(['posts' => $post]);
     }
 }
