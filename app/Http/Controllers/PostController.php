@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateLimit(1)]);  
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(1)]);  
     }
 
     public function show(Post $post)
@@ -22,10 +23,10 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {
-     $input = #repuest['post'];
-     $post->fill($input)->save();
-     return redirect('/posts/' . $post->id);
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
     }
 }
