@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Request\PostRequest;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -22,10 +23,15 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {
-     $input = #repuest['post'];
-     $post->fill($input)->save();
-     return redirect('/posts/' . $post->id);
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
+    }
+    
+    public function edit(Post $post)
+    {
+        return view('posts/edit')->with(['$post' => $post]);
     }
 }
