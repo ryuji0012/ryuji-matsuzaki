@@ -5,7 +5,7 @@
         <title>Blog</title>
         
         <!-- Fonts -->
-        <link href="https"://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     
     </head>
     <body class="antialiased">
@@ -16,17 +16,17 @@
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name=post[title] placeholder="タイトル" value={{ $post->title }}>
-                <p class='title__error' style="color:red">{{ $error->first('post.title') }} </p>
+                <p class='title__error' style="color:red">{{ $errors->first('post.title') }} </p>
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"{{ $post->body }}</textarea>
+                <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。">{{ $post->body }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
-            <input type="submit" value="update"/>
+            <input type="submit" value="update">
         </form>
         <div class="footer">
-            [<a href="/posts/{{ $posts->id }}">戻る</a>]
+            <a href="/posts/{{ $post->id }}">戻る</a>
         </div>
     </body>
 </html>
