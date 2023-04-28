@@ -23,8 +23,17 @@
                 <p class="body_error" style="coler:red">{{ $errors->first('post.body') }}</p>
             </div>
             <input type="submit" value="store">
+            <div class="category">
+    <h2>Category</h2>
+    <select name="post[category_id]">
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    　　</select>
+    　　</div>
+     
         </form>
-        <div class="footer">
+       <div class="footer">
             [<a href="/">戻る</a>]
         </div>
     </body>
